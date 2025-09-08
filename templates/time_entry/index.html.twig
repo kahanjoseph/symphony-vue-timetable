@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Time Entry{% endblock %}
+
+{% block body %}
+<div id="app">
+  <!-- Vue app will be mounted here -->
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% if app.environment == 'dev' %}
+        <link rel="stylesheet" href="http://localhost:5173/src/style.css">
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('my-vue-app/dist/assets/index.css') }}">
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if app.environment == 'dev' %}
+        <script type="module" src="http://localhost:5173/src/main.ts"></script>
+    {% else %}
+        <script type="module" src="{{ asset('my-vue-app/dist/assets/index.js') }}"></script>
+    {% endif %}
+{% endblock %}
